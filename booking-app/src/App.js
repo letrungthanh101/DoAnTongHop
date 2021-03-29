@@ -1,35 +1,47 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {useEffect }from "react"
+import React, { useEffect } from 'react';
 import productApi from './Api/productApi';
-function App() {
 
-  useEffect( () => {
-    const fetchProduct = async () =>{
+import { Redirect, Route, Switch } from 'react-router';
+
+import Header from './Components/Header';
+
+import Home from "../src/Pages/Home"
+import Store from "../src/Pages/Store"
+import Booking from "../src/Pages/Booking"
+import Blog from "../src/Pages/Blog"
+import Owner from "../src/Pages/Owner"
+
+import Login from "../src/Features/Login"
+import SignUp from "../src/Features/Signup"
+
+function App() {
+  useEffect(() => {
+    const fetchProduct = async () => {
       const params = {
-        _limit:10
-      }
+        _limit: 10,
+      };
       const productList = await productApi.getAll(params);
-      console.log(productList)
-    }
+      console.log(productList);
+    };
     fetchProduct();
-  }, [])
+  }, []);
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+      <Header />
+      <Route path = "/" component={Home} exact/>
+      <Route path = "/home" component={Home} />
+    
+      <Switch>
+      <Route path = "/store" component={Store} />
+      <Route path = "/booking" component={Booking} />
+      <Route path = "/blog" component={Blog} />
+      <Route path = "/owner" component={Owner} />
+      <Route path = "/login" component={Login} exact />
+      <Route path = "/sign-up" component={SignUp} exact />
+      </Switch>
+     
     </div>
   );
 }
