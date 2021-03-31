@@ -1,57 +1,33 @@
 @import '../../SASS/_variable.scss';
 
 header {
+  // background-color: $color-black;
   background-color: $color-black;
 }
-.nav {
+.logo-brand {
+  display: none;
+}
+.navbar-flex{
   display: flex;
-  justify-content: space-between;
+}
 
-  .top-nav {
-    .top-nav__ul {
-      li {
-        display: inline-block;
-        list-style: none;
-        padding: 20px 30px;
-        font-size: $fs-header;
-        
-        a {
-          color: $color-white;
-          transition: all 0.3s ease-in;
-          &:hover{
-            text-decoration: none;
-          cursor: pointer;
-          }
-        
-        }
-        .li__item--hover:hover {
-          
-          color: $color-primary;
-         
-      }
-      .active-menu{
-        color: $color-primary;
-      }
-
-
-        // .btn--primary {
-        //   background-color: $color-primary;
-        //   border-radius: 20px;
-        //   width: 140px;
-        //   transition: all 0.3s ease 0s;
-        //   word-spacing: 6px;
-        // &:hover {
-        //     opacity: 90%;
-        //      a {
-        //        color:white;
-        //      }
-        //   }
-
-        // }
-      }
-    }
+@media only screen and (max-width: 991px){
+  .navbar-brand {
+      display: inline-block;
   }
-  .logo {
-    cursor: pointer;
+  .logo{
+      display: none;
   }
+}
+@media only screen and (max-width: 991px){
+  .navbar-brand {
+      display: inline-block;
+  }
+  .logo{
+      display: none;
+  }
+}
+
+li {
+padding: 0 20px;
 }
