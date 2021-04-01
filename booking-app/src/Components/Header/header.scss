@@ -7,27 +7,46 @@ header {
 .logo-brand {
   display: none;
 }
-.navbar-flex{
+.navbar-flex {
   display: flex;
 }
 
-@media only screen and (max-width: 991px){
+@media only screen and (max-width: 991px) {
   .navbar-brand {
-      display: inline-block;
+    display: inline-block;
   }
-  .logo{
-      display: none;
+  .logo {
+    display: none;
   }
-}
-@media only screen and (max-width: 991px){
   .navbar-brand {
-      display: inline-block;
+    display: inline-block;
   }
-  .logo{
-      display: none;
+  .logo-brand{
+    display: block;
+    img{
+      width: 80%;
+      height: 80%;
+    }
+ 
   }
+  .nav-item{
+    margin: 15px auto;
+    // margin-top:15px ;
+  }
+  
 }
 
+
 li {
-padding: 0 20px;
+  padding: 0 20px;
+  a {
+    color: $color-white;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  .li__item--hover:hover {
+    color: $color-primary;
+    text-decoration: none;
+  }
 }

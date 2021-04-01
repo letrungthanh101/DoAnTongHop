@@ -30,7 +30,7 @@ function Header(props) {
   return (
     <div>
       <header>
-        <nav className="navbar navbar-expand-lg navbar-light ">
+        <nav className="navbar navbar-expand-lg  ">
           <div className="top-nav--middle logo-brand">
           <Link to="/home" exact>
                 <img src={logo} alt="logo" />

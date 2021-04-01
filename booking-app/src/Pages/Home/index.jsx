@@ -8,8 +8,8 @@ index.propTypes = {
 
 function index(props) {
     return (
-        <div>
-            <h3>Đây là home</h3>
+        <div className="container-fluid ">
+          
         
         </div>
     );
