@@ -1,1 +1,25 @@
-@import "../../SASS/variable"
+@import '../../SASS/variable';
+
+
+.row {
+ 
+  background-color: $color-secondary;
+
+}
+
+.form-booking {
+  // width: 80%;
+  // top: 20px;
+  border: 1px solid black;
+  background-color: $color-white;
+  
+}
+
+.img-banner {
+  height: 315px;
+}
+@media only screen and(max-width: 576px){
+.banner--none{
+  display: none;
+}
+}
