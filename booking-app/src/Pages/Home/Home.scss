@@ -1,7 +1,7 @@
 @import '../../SASS/variable';
 
 
-.row {
+.booking--row{
  
   background-color: $color-secondary;
 
@@ -15,11 +15,33 @@
   
 }
 
-.img-banner {
-  height: 315px;
+.banner {
+  margin-top: 12px;
 }
+.img-banner {
+  height: 345px;
+  border-radius: 5px;
+}
+
 @media only screen and(max-width: 576px){
 .banner--none{
   display: none;
 }
+}
+.h4--lobster {
+  font-family: 'Lobster', cursive;
+  padding-left: 10px;
+}
+.barber-item{
+  // border: 1px solid black;
+  border-radius: 2%;
+  box-shadow:  3px 3px #f0edf0;
+  margin-right: 30px;
+  &:hover{
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+  }
+}
+.img-barber{
+  width: 100%;
 }

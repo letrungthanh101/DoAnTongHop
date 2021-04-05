@@ -21,9 +21,8 @@ const useStyles = makeStyles({
     padding: '0 30px',
   },
   btn: {
-    color: 'white'
-  }
- 
+    color: 'white',
+  },
 });
 
 function Header(props) {
@@ -31,15 +30,11 @@ function Header(props) {
   return (
     <div>
       <header className="container-fluid">
-        <nav className="nav ">
-          {/* <IconButton>
-            <MenuIcon className = {classes.btn}/>
-          </IconButton> */}
+        <nav className="nav d-flex ">
           <div className="top-nav top-nav--left">
             <ul className="top-nav__ul top-nav__ul--left ">
               <li>
                 <NavLink to="/home" className="li__item  li__item--hover nav-item " activeClassName="active-menu">
-                  
                   HOME
                 </NavLink>
               </li>
@@ -49,12 +44,9 @@ function Header(props) {
                 </NavLink>
               </li>
               <li>
-            
-             <NavLink to="/booking" className="li__item  li__item--hover nav-item" activeClassName="active-menu">
+                <NavLink to="/booking" className="li__item  li__item--hover nav-item" activeClassName="active-menu">
                   BOOKING
                 </NavLink>
-       
-             
               </li>
             </ul>
           </div>
@@ -66,7 +58,7 @@ function Header(props) {
           <div className=" top-nav top-nav--right">
             <ul className="top-nav__ul  top-nav__ul--right ">
               <li>
-                <NavLink to="/blog" className="li__item  li__item--hover nav-item" activeClassName="active-menu">
+                <NavLink to="/blog" className="li__item  li__item--hover nav-item " activeClassName="active-menu">
                   BLOG
                 </NavLink>
               </li>

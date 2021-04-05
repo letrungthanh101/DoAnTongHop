@@ -47,7 +47,7 @@ function Header(props) {
             <MenuIcon className={classes.btn}/>
           </IconButton>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto navbar-flex">
+            <ul className="navbar-nav m-auto navbar-flex">
               <li className="nav-item active">
                 <NavLink to="/home" className="li__item  li__item--hover  " activeClassName="active-menu">
                   HOME
@@ -64,12 +64,12 @@ function Header(props) {
                 </NavLink>
               </li>
             </ul>
-            <div className="top-nav--middle logo  mr-auto navbar-flex">
+            <div className="top-nav--middle logo  m-auto navbar-flex">
               <Link to="/home" exact>
                 <img src={logo} alt="logo" />
               </Link>
             </div>
-            <ul className="navbar-nav  navbar-flex">
+            <ul className="navbar-nav m-auto navbar-flex">
               <li className="nav-item active">
                 <NavLink to="/blog" className="li__item  li__item--hover " activeClassName="active-menu">
                   BLOG
