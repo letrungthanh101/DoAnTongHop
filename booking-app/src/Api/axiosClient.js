@@ -1,5 +1,5 @@
 import axios from "axios"
-
+import firebase from "firebase"
 
 const axiosClient = axios.create({
     baseURL: 'https://api.ezfrontend.com/',
@@ -12,8 +12,13 @@ const axiosClient = axios.create({
 //interceptors
 
 // Add a request interceptor
-axiosClient.interceptors.request.use(function (config) {
+axiosClient.interceptors.request.use(async function (config) {
     // Do something before request is sent
+    const currentUser = firebase.auth().currentUser;
+    if(currentUser){
+      const token =  await currentUser.getIdToken();
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   }, function (error) {
     // Do something with request error

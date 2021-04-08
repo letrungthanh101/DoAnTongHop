@@ -5,7 +5,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -13,8 +12,26 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase';
 
 import { Link } from 'react-router-dom';
+
+// Configure FirebaseUI.
+const uiConfig = {
+  // Popup signin flow rather than redirect flow.
+  signInFlow: 'redirect',
+  signInSuccessUrl: '/home',
+  // We will display Google and Facebook as auth providers.
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    // firebase.auth.FacebookAuthProvider.PROVIDER_ID
+  ],
+  // callbacks: {
+  //   // Avoid redirects after sign-in.
+  //   signInSuccessWithAuthResult: () => false,
+  // },
+};
 
 function Copyright() {
   return (
@@ -94,19 +111,12 @@ export default function Login() {
             id="password"
             autoComplete="current-password"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+          <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             Sign In
           </Button>
+          <p className="text-center">OR</p>
+          <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
           <Grid container>
             <Grid item xs>
               <Link to="/" variant="body2">
@@ -114,13 +124,10 @@ export default function Login() {
               </Link>
             </Grid>
             <Grid item>
-              <Link to ="/sign-up" variant="body2">
+              <Link to="/sign-up" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
-          </Grid>
-          <Grid>
-
           </Grid>
         </form>
       </div>

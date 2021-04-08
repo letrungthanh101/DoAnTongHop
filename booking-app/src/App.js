@@ -1,20 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-import React, { useEffect } from 'react';
+import firebase from 'firebase';
+import React, { useEffect , useState} from 'react';
+import { Route, Switch } from 'react-router';
+import Login from "../src/Features/Auth/Login";
+import SignUp from "../src/Features/Auth/Signup";
+import Blog from "../src/Pages/Blog";
+import Booking from "../src/Pages/Booking";
+import Home from "../src/Pages/Home";
+import Owner from "../src/Pages/Owner";
+import Store from "../src/Pages/Store";
 import productApi from './Api/productApi';
-
-import { Redirect, Route, Switch } from 'react-router';
-
+import './App.css';
 import Header from './Components/Header';
 
-import Home from "../src/Pages/Home"
-import Store from "../src/Pages/Store"
-import Booking from "../src/Pages/Booking"
-import Blog from "../src/Pages/Blog"
-import Owner from "../src/Pages/Owner"
 
-import Login from "../src/Features/Login"
-import SignUp from "../src/Features/Signup"
+
+
+
+
+
+// Configure Firebase.
+const config = {
+  apiKey: 'AIzaSyAvh3gwXaUOLNhIh1UBHEMASnbgpAGHPzc',
+  authDomain: 'flutterapp-a5eb3.firebaseapp.com',
+  // ...
+};
+firebase.initializeApp(config);
+
 
 function App() {
   useEffect(() => {
@@ -27,6 +38,25 @@ function App() {
     };
     fetchProduct();
   }, []);
+
+  const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
+   // Listen to the Firebase Auth state and set the local state.
+   useEffect(() => {
+    const unregisterAuthObserver = firebase.auth().onAuthStateChanged( async(user) => {
+      // setIsSignedIn(!!user);
+      if (!user){
+        console.log('user is not logged in')
+        return;
+      }
+      console.log('Logged in user', user.displayName)
+   
+      const token = await user.getIdToken();
+      console.log('Logged in user token', token)
+    });
+ 
+    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  }, []);
+
   return (
     <div className="App">
       <Header />

@@ -1,0 +1,36 @@
+@import "../../SASS/variable";
+
+
+footer {
+    padding: 0px !important;
+    h5 {
+        color: $color-white;
+        text-align: center;
+    }
+   ul{
+       text-align: center;
+      a:hover{
+          text-decoration: none;
+      }
+   }
+   .footer-item{
+      text-align: center;
+      margin: 30px 0px;
+      p{
+          color: $color-white;
+          font-weight: bold;
+      }
+   }
+    background-color: black;
+    .footer-thumbnail {
+        display: flex;
+        justify-content: center;
+       
+        img{
+          height: 60px;
+            padding: 10px;
+            
+        }
+        
+    }
+}
