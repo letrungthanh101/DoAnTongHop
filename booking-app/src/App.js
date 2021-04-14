@@ -10,6 +10,7 @@ import Owner from "../src/Pages/Owner";
 import Store from "../src/Pages/Store";
 import productApi from './Api/productApi';
 import './App.css';
+import Footer from './Components/Footer';
 import Header from './Components/Header';
 
 
@@ -70,8 +71,9 @@ function App() {
       <Route path = "/owner" component={Owner} />
       <Route path = "/login" component={Login} exact />
       <Route path = "/sign-up" component={SignUp} exact />
+    
       </Switch>
-     
+      {/* <Footer/> */}
     </div>
   );
 }

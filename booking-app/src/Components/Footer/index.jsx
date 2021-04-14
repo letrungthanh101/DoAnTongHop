@@ -18,7 +18,7 @@ export default function Footer() {
 
 
   return (
-    <footer className="">
+    <footer className="container-fluid">
       <div className="row">
         <div className="col-md-3 footer-item">
           <img src={logo} alt=""/>
