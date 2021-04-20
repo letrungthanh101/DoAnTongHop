@@ -1,8 +1,18 @@
 @import '../../SASS/variable';
 
-.booking--row {
+
+.bg--primary{
   background-color: $color-secondary;
 }
+
+.section--margin-top{
+  margin-top: $margin-top;
+}
+.title {
+  margin: $margin-text;
+  font-size: 500;
+}
+
 
 .form-booking {
   // width: 80%;
@@ -13,13 +23,14 @@
 
 .banner {
   // margin-top: 12px;
-  margin: 12px 0px;
+  margin: 15px 0px;
 
 }
 .img-banner {
-  
   border-radius: 5px;
 }
+
+
 
 @media only screen and(max-width: 576px) {
   .banner--none {
@@ -35,8 +46,8 @@
   // justify-content: space-around;
   .barber-item {
     // border: 1px solid black;
-    width: 300px;
-    height: 300px;
+    width: $box-size;
+    height: $box-size;
     border-radius: 2%;
     box-shadow: 0px 7px 10px rgb(0, 0, 0.5);
     position: relative;

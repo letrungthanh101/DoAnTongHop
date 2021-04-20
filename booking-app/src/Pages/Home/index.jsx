@@ -1,53 +1,51 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// import OwlCarousel from 'react-owl-carousel';
-// import 'owl.carousel/dist/assets/owl.carousel.css';
-// import 'owl.carousel/dist/assets/owl.theme.default.css'
 
 import './Home.scss';
-import { Button, Container } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import Content from '../../Components/Content';
 import Images from '../../Constants/Images';
 import Footer from '../../Components/Footer';
 import SearchForm from '../../Features/SearchForm';
 
+import Carousel from '../../Components/Carousel';
 Home.propTypes = {};
 
 function Home(props) {
   return (
     <div className="wrapper">
-      <div className="container-fluid ">
-        <section className="booking ">
+      <div className="container-fluid bg--primary">
+        <section className="booking container ">
           <div className="row d-flex justify-content-center booking--row ">
-            <div className="col-md-6 col-12 col-lg-3 col-sm-10 ">
+            <div className="col-md-6 col-12 col-lg-5 col-sm-10 ">
               <SearchForm />
             </div>
-            <div className="col-md-12 col-12 col-lg-5 banner--none banner">
+            <div className="col-md-12 col-12 col-lg-7 banner--none banner">
               <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                 <div className="carousel-inner">
                   <div className="carousel-item active">
                     <img
-                      className="d-block  img-banner img-fluid"
+                      className="d-block  img-banner w-100"
                       src={Images.img_Banner}
                       alt="First slide"
-                      style={{ height: '348px' }}
+                      style={{ height: '341px' }}
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      className="d-block  img-banner img-fluid"
+                      className="d-block  img-banner img-fluid  w-100"
                       src={Images.img_Banner1}
                       alt="Second slide"
-                      style={{ height: '348px' }}
+                      style={{ height: '341px' }}
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      className="d-block  img-banner img-fluid"
+                      className="d-block  img-banner img-fluid  w-100"
                       src={Images.img_Banner2}
                       alt="Third slide"
-                      style={{ height: '348px' }}
+                      style={{ height: '341px' }}
                     />
                   </div>
                 </div>
@@ -64,7 +62,7 @@ function Home(props) {
           </div>
         </section>
       </div>
-      <section className="container">
+      <section className="container section--margin-top ">
         <div className="d-flex justify-content mt-3">
           <h3>Welcome to</h3>
           <h3 className="h4--lobster">Booking Barbershop</h3>
@@ -75,8 +73,9 @@ function Home(props) {
             <Link to="/login">Login</Link> or <Link to="/sign-up">Sign up</Link> o experience right now !
           </p>
         </div>
+        <h3 className="title">Recently Viewed</h3>
         <div className="row content-item">
-          <div className="col-md-4 col-5 barber-item  ">
+          <div className="col-md-3 col-5 barber-item  ">
             <img src={Images.img_LiemBarber} alt="photo" className="img-barber" />
 
             <div className="mt-2 info">
@@ -87,7 +86,7 @@ function Home(props) {
               </Button>
             </div>
           </div>
-          <div className="col-md-4 col-5 barber-item ">
+          <div className="col-md-3 col-5 barber-item ">
             <img src={Images.img_VuTriBarber} alt="photo" className="img-barber " />
 
             <div className="mt-2 info">
@@ -98,8 +97,13 @@ function Home(props) {
           </div>
         </div>
       </section>
+
+      <section className="container section--margin-top">
+       
+        <Carousel />
+      </section>
       <Content />
-    <Footer/>
+      <Footer />
     </div>
   );
 }

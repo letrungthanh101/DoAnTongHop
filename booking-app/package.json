@@ -9,15 +9,18 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/pickers": "^3.3.10",
     "@material-ui/styles": "^4.11.3",
+    "@react-firebase/database": "^0.3.11",
+    "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
-    "firebase": "^8.3.2",
+    "firebase": "^8.4.1",
+    "infinite-react-carousel": "^1.2.11",
     "node-sass": "^4.14.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-elastic-carousel": "^0.11.4",
+    "react-elastic-carousel": "^0.11.5",
     "react-firebaseui": "^4.1.0",
     "react-hook-form": "^7.0.4",
     "react-owl-carousel": "^2.3.3",
@@ -51,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-alice-carousel": "^2.5.1"
   }
 }

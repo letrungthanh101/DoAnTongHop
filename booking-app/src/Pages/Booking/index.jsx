@@ -8,7 +8,11 @@ Booking.propTypes = {
 function Booking(props) {
     return (
         <div>
-            <h3>Đây là booking</h3>
+           <div className="container-fluid"></div>
+           <div className="container">
+
+           </div>
+           <div className="container"></div>
         </div>
     );
 }

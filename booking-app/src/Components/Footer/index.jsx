@@ -1,9 +1,5 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+
 
 import logo from "../../Assets/Images/SVG/logo.svg";
 import facebook from "../../Assets/Images/SVG/facebook.svg"
@@ -11,8 +7,6 @@ import facebook from "../../Assets/Images/SVG/facebook.svg"
 import instagram from "../../Assets/Images/SVG/instagram.svg"
 import printerest from "../../Assets/Images/SVG/pinterest.svg"
 import "./footer.scss"
-
-
 
 export default function Footer() {
 

@@ -1,0 +1,51 @@
+@import '../../SASS/variable';
+.card__barbershop {
+  width: 240px;
+  height: 300px;
+
+  position: relative;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+
+  }
+  :hover {
+    transition: ease-in-out 0.5s all;
+    cursor: pointer;
+  }
+  .card__overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    h5 {
+      color: $color-white;
+    }
+    p {
+      color: $color-white;
+    }
+  }
+}
+.card__coupon {
+    width: 320px;
+    img{
+        object-fit: cover;
+        width: 100%;
+        height: 200px;
+    }
+}
+.card__recommend{
+    width: 240px;
+    height: 180px;
+    img{
+        object-fit: cover;
+        width: 100%;
+        height: 180px;
+    }
+    .card__description{
+        
+    }
+}
