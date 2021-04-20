@@ -1,32 +1,37 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import logo3 from '../../Assets/Images/SVG/logo3.svg';
-import './content.scss';
+import Images from '../../Constants/Images';
 
-Content.propTypes = {};
+import './content.scss';
 
 function Content(props) {
   return (
     <div className="container content">
       <div className="row">
-        <div className="content__item content__img">
-          <img src={logo3} alt="photo" />
+        <div className="col-md-4">
+          <div className="content__item content__img">
+            <img src={Images.img_logo} />
+          </div>
+          <div className="content__item  content__description">
+            <h4>the best quality</h4>
+            <p>
+              Booking Barbershop is currently the number 1 online booking barbershop platform in Vietnam. With us, you
+              have a great experience.
+            </p>
+          </div>
         </div>
-        <div className="content__item  content__p">
-          <h4>the best quality</h4>
-          <p>
-            Booking Barbershop is currently the number 1 online booking barbershop platform in Vietnam. With us, you
-            have a great experience.
-          </p>
+        <div className="col-md-3  content__item  content__img--flex">
+          <div>
+            <img src={Images.img_qrcode}  className="img--med"/>
+          </div>
+          <div>
+            <img src={Images.img_googleplay} className="img--small" />
+            <img src={Images.img_appstore} className="img--small" />
+          </div>
         </div>
-      </div>
-      <div className="row">
-        <div className="col-md-8">
-          <div className="col-md-3"></div>
-          <div className="col-md-3"></div>
-          <div className="col-md-3"></div>
+
+        <div className="col-md-4 content__item_image">
+          <img src={Images.img_showphone} />
         </div>
-        <div className="col-md-4"></div>
       </div>
     </div>
   );

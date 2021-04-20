@@ -9,11 +9,15 @@ import ForRau from '../Assets/Images/ForRau.jpg';
 import hurricage from '../Assets/Images/hurricage.jpg';
 import uudai1 from '../Assets/Images/uudai1.jpg';
 
-// import logo from '../../Assets/Images/logo.svg';
-// import facebook from '../../Assets/Images/facebook.svg';
+import logo3 from '../Assets/Images/SVG/logo3.svg';
+import apppstore from '../Assets/Images/SVG/apppstore.svg';
+import googleplay from '../Assets/Images/SVG/googleplay.svg';
+import qrcode from '../Assets/Images/SVG/qrcode.svg';
+import showphone from '../Assets/Images/showphone.png';
+import facebook from '../Assets/Images/SVG/facebook.svg';
+import instagram from '../Assets/Images/SVG/instagram.svg';
+import printerest from '../Assets/Images/SVG/pinterest.svg';
 
-// import instagram from '../../Assets/Images/instagram.svg';
-// import printerest from '../../Assets/Images/pinterest.svg';
 const Images = {
   img_Banner: banner,
   img_Banner1: banner1,
@@ -24,11 +28,16 @@ const Images = {
   img_August: August,
   img_4rau: ForRau,
   img_hurricage: hurricage,
-  img_uudai: uudai1
-  //   logo,
-  //   facebook,
-  //   instagram,
-  //   printerest,
+  img_uudai: uudai1,
+
+  img_logo: logo3,
+  img_facebook:facebook,
+  img_instagram:instagram,
+  img_printerest: printerest,
+  img_showphone: showphone,
+  img_appstore: apppstore,
+  img_googleplay:googleplay,
+  img_qrcode: qrcode
 };
 
 export default Images;

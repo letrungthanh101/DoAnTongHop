@@ -87,7 +87,7 @@
     .info{
       position: relative;
       z-index: 3;
-      color: #ffff;
+      color: $color-white;
       opacity: 0;
       transform: rotateY(30px);
       transition: 0.5s all;
@@ -99,11 +99,13 @@
     }
     .info h5{
       margin: 0;
+      color: $color-white;
     }
     .info p{
       letter-spacing: 1px;
       margin-top: 8px;
       margin-bottom: 20px;
+      color: $color-white;
     }
   }
 

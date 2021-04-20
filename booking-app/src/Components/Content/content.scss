@@ -1,3 +1,36 @@
-h4{
-    text-transform: uppercase;
+@import '../../SASS/mixin';
+@import '../../SASS/variable';
+
+.content {
+  @include margin--auto();
+  .content__description {
+    margin-top: 20px;
+    h4 {
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 10px 0px;
+    }
+    p {
+      font-size: $fs-p;
+    }
+  }
+
+  .content__img--flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .img--med {
+      margin-top: 10px;
+      width: 135%;
+    }
+    .img--small {
+      width: 65%;
+      margin: 10px 0px 5px 40px;
+    }
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .content {
+    display: none;
+  }
 }
