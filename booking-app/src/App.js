@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import 'firebase/firestore';
+
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router';
 import Login from '../src/Features/Auth/Login';
@@ -11,20 +11,19 @@ import Owner from '../src/Pages/Owner';
 import Store from '../src/Pages/Store';
 import productApi from './Api/productApi';
 import './App.css';
+import Footer from './Components/Footer';
 import Header from './Components/Header';
-
 
 // Configure Firebase.
 const config = {
-  apiKey: 'AIzaSyAvh3gwXaUOLNhIh1UBHEMASnbgpAGHPzc',
-  authDomain: 'flutterapp-a5eb3.firebaseapp.com',
+  apiKey: process.env.REACT_APP_FIREBASE_API,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: "flutterapp-a5eb3",
   // ...
 };
 firebase.initializeApp(config);
 
 function App() {
-  // const ref = firebase.firestore().collection('flutterapp-a5eb3');
-  // console.log(ref);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -56,7 +55,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    
+   const fetchData = async () =>{
+     const data = firebase.database().ref('Users');
+     data.on('value',snapshot => {
+      console.log('Dữ liệu đã lấy về',snapshot);
+     })
+   }
+   fetchData();
   }, []);
 
   return (
@@ -73,7 +78,7 @@ function App() {
         <Route path="/login" component={Login} exact />
         <Route path="/sign-up" component={SignUp} exact />
       </Switch>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   );
 }

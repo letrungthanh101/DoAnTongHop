@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 
 import './Home.scss';
@@ -10,8 +10,6 @@ import Footer from '../../Components/Footer';
 import SearchForm from '../../Features/SearchForm';
 
 import Carousel from '../../Components/Carousel';
-Home.propTypes = {};
-
 function Home(props) {
   return (
     <div className="wrapper">
@@ -103,7 +101,7 @@ function Home(props) {
         <Carousel />
       </section>
       <Content />
-      <Footer />
+
     </div>
   );
 }

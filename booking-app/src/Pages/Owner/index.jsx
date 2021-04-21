@@ -1,9 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-Owner.propTypes = {
-    
-};
 
 function Owner(props) {
     return (
