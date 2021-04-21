@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/deploy-github/static/css/main.63d1b276.chunk.css",
+    "main.js": "/deploy-github/static/js/main.414661e8.chunk.js",
+    "main.js.map": "/deploy-github/static/js/main.414661e8.chunk.js.map",
+    "runtime-main.js": "/deploy-github/static/js/runtime-main.1e39d26f.js",
+    "runtime-main.js.map": "/deploy-github/static/js/runtime-main.1e39d26f.js.map",
+    "static/js/2.2395b40d.chunk.js": "/deploy-github/static/js/2.2395b40d.chunk.js",
+    "static/js/2.2395b40d.chunk.js.map": "/deploy-github/static/js/2.2395b40d.chunk.js.map",
+    "static/js/3.90a9deef.chunk.js": "/deploy-github/static/js/3.90a9deef.chunk.js",
+    "static/js/3.90a9deef.chunk.js.map": "/deploy-github/static/js/3.90a9deef.chunk.js.map",
+    "index.html": "/deploy-github/index.html",
+    "static/css/main.63d1b276.chunk.css.map": "/deploy-github/static/css/main.63d1b276.chunk.css.map",
+    "static/js/2.2395b40d.chunk.js.LICENSE.txt": "/deploy-github/static/js/2.2395b40d.chunk.js.LICENSE.txt",
+    "static/media/August.d7b0db55.jpg": "/deploy-github/static/media/August.d7b0db55.jpg",
+    "static/media/ForRau.7be28d94.jpg": "/deploy-github/static/media/ForRau.7be28d94.jpg",
+    "static/media/Liem1.9b9c2327.jpg": "/deploy-github/static/media/Liem1.9b9c2327.jpg",
+    "static/media/VuTriBarber.75c6a50d.jpg": "/deploy-github/static/media/VuTriBarber.75c6a50d.jpg",
+    "static/media/apppstore.a67edd1a.svg": "/deploy-github/static/media/apppstore.a67edd1a.svg",
+    "static/media/banner.d6acb130.jpg": "/deploy-github/static/media/banner.d6acb130.jpg",
+    "static/media/banner1.44f9e794.jpg": "/deploy-github/static/media/banner1.44f9e794.jpg",
+    "static/media/banner2.2ce9d255.jpg": "/deploy-github/static/media/banner2.2ce9d255.jpg",
+    "static/media/facebook.5aa9dd97.svg": "/deploy-github/static/media/facebook.5aa9dd97.svg",
+    "static/media/googleplay.5d8ba507.svg": "/deploy-github/static/media/googleplay.5d8ba507.svg",
+    "static/media/haircut.f3655f5f.svg": "/deploy-github/static/media/haircut.f3655f5f.svg",
+    "static/media/hurricage.036fd245.jpg": "/deploy-github/static/media/hurricage.036fd245.jpg",
+    "static/media/instagram.172f3110.svg": "/deploy-github/static/media/instagram.172f3110.svg",
+    "static/media/logo.742c4729.svg": "/deploy-github/static/media/logo.742c4729.svg",
+    "static/media/logo3.4b6f94c0.svg": "/deploy-github/static/media/logo3.4b6f94c0.svg",
+    "static/media/pinterest.1e51b1eb.svg": "/deploy-github/static/media/pinterest.1e51b1eb.svg",
+    "static/media/qrcode.a8706d66.svg": "/deploy-github/static/media/qrcode.a8706d66.svg",
+    "static/media/shine30.45cbe5ef.jpg": "/deploy-github/static/media/shine30.45cbe5ef.jpg",
+    "static/media/showphone.b67cd7a9.png": "/deploy-github/static/media/showphone.b67cd7a9.png",
+    "static/media/uudai1.f9ec3a50.jpg": "/deploy-github/static/media/uudai1.f9ec3a50.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1e39d26f.js",
+    "static/js/2.2395b40d.chunk.js",
+    "static/css/main.63d1b276.chunk.css",
+    "static/js/main.414661e8.chunk.js"
+  ]
+}
