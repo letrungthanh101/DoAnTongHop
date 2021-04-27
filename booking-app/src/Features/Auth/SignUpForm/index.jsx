@@ -50,11 +50,14 @@ export default function SignUpForm(props) {
       }),
     email: yup.string().required('Please enter your email').email('Please enter valid your email'),
     passWord: yup.string().required('Please enter your password').min(6, 'Please enter at least 6 character.'),
+    confirmPassword: yup.string().required('Please retype password').oneOf([yup.ref('passWord')],'Password dose not match'),
+    phoneNumber: yup.number().required('Please enter you phone numbers').typeError('Enter valid your phone number').min(10,'Your phone number invalid')
   });
   const form = useForm({
     defaultValues: {
       fullName: '',
       email: '',
+      phoneNumber:'',
       passWord: '',
       confirmPassword: '',
     },
@@ -84,6 +87,7 @@ export default function SignUpForm(props) {
           <Grid container spacing={2}>
             <InputField name="fullName" label="Full Name" form={form} />
             <InputField name="email" label="Email" form={form} />
+            <InputField name="phoneNumber" label="Phone Number" form={form}/>
             <PasswordField name="passWord" label="Password" form={form} />
             <PasswordField name="confirmPassword" label="Confirm Password" form={form} />
 

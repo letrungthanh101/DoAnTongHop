@@ -22,7 +22,7 @@ function PasswordField(props) {
   const {
     formState: { errors },
   } = form;
-  const hasError = errors[name];
+  const hasError = !!errors[name];
 
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = () => {
@@ -30,22 +30,22 @@ function PasswordField(props) {
   };
   return (
     <div>
-      <FormControl variant="outlined" margin="normal">
+      <FormControl variant="outlined" margin="normal"  error={hasError}  >
         <InputLabel htmlFor={name}>{label}</InputLabel>
         <Controller
           name={name}
           control={form.control}
-         
           render={({ field }) => (
             <OutlinedInput
+        
               id={name}
               type={showPassword ? 'text' : 'password'}
               label={label}
-            fullWidth
+          
               {...field}
               endAdornment={
                 <InputAdornment position="end" >
-                  <IconButton aria-label="toggle password visibility" onClick={toggleShowPassword} edge="end">
+                  <IconButton aria-label="toggle password visibility" onClick={toggleShowPassword} edge="end" >
                     {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
