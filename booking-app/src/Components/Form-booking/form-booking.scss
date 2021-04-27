@@ -1,0 +1,22 @@
+.content__slider{
+    background-color: #383443;
+}
+
+
+.content--img{
+    img {
+        width: 98%;
+        object-fit: cover;
+        height: 200px;
+        margin: 0px 2px;
+        .svg--small {
+            width: 100%;
+        }
+        
+    }
+    
+}
+.barberber__info{
+    display: flex;
+    justify-content: space-around;
+}

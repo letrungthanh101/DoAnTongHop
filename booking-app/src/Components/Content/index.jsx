@@ -9,7 +9,7 @@ function Content(props) {
       <div className="row">
         <div className="col-md-4">
           <div className="content__item content__img">
-            <img src={Images.img_logo} />
+            <img src={Images.img_logo} alt ="img_logo" />
           </div>
           <div className="content__item  content__description">
             <h4>the best quality</h4>
@@ -21,16 +21,16 @@ function Content(props) {
         </div>
         <div className="col-md-3  content__item  content__img--flex">
           <div>
-            <img src={Images.img_qrcode}  className="img--med"/>
+            <img src={Images.img_qrcode}  className="img--med" alt ="img_qrcode"/>
           </div>
           <div>
-            <img src={Images.img_googleplay} className="img--small" />
-            <img src={Images.img_appstore} className="img--small" />
+            <img src={Images.img_googleplay} className="img--small" alt ="img_googleplay"/>
+            <img src={Images.img_appstore} className="img--small"  alt ="img_appstore"/>
           </div>
         </div>
 
         <div className="col-md-4 content__item_image">
-          <img src={Images.img_showphone} />
+          <img src={Images.img_showphone} alt ="img_showphone" />
         </div>
       </div>
     </div>

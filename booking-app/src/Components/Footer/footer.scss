@@ -3,13 +3,14 @@
 
 
 footer {
-
+    margin-top: 107px;
     h5 {
         color: $color-white;
         text-align: center;
     }
    ul{
        text-align: center;
+       list-style: none;
       a:hover{
           text-decoration: none;
       }

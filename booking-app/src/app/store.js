@@ -1,5 +1,8 @@
+
+
+import { configureStore } from '@reduxjs/toolkit';
 import barbershopReducer from '../Features/Barbershops/barbershopSlice';
-const { configureStore } = require('@reduxjs/toolkit');
+
 // khởi tạo root
 const rootReducer = {
   barbershop: barbershopReducer,

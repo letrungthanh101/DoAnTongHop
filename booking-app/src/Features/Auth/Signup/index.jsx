@@ -8,7 +8,7 @@ SignUp.propTypes = {
 
 function SignUp(props) {
   const handleSubmit = (values) =>{
-    console.log(values)
+    console.log( "form submit: ",values)
   }
   return (
     <div>

@@ -1,14 +1,11 @@
 import React from 'react';
+import FormBooking from '../../Components/Form-booking';
 
 
 function Booking(props) {
     return (
         <div>
-           <div className="container-fluid"></div>
-           <div className="container">
-
-           </div>
-           <div className="container"></div>
+           <FormBooking/>
         </div>
     );
 }

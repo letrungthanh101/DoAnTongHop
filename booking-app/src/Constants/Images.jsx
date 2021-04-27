@@ -8,6 +8,9 @@ import August from '../Assets/Images/August.jpg';
 import ForRau from '../Assets/Images/ForRau.jpg';
 import hurricage from '../Assets/Images/hurricage.jpg';
 import uudai1 from '../Assets/Images/uudai1.jpg';
+import LiemBarber from '../Assets/Images/LiemBarber.jpg';
+import liembarber2 from  '../Assets/Images/liembarber2.jpg';
+
 
 import logo3 from '../Assets/Images/SVG/logo3.svg';
 import apppstore from '../Assets/Images/SVG/apppstore.svg';
@@ -17,12 +20,14 @@ import showphone from '../Assets/Images/showphone.png';
 import facebook from '../Assets/Images/SVG/facebook.svg';
 import instagram from '../Assets/Images/SVG/instagram.svg';
 import printerest from '../Assets/Images/SVG/pinterest.svg';
-
+import calendar from "../Assets/Images/SVG/calendar.svg";
 const Images = {
   img_Banner: banner,
   img_Banner1: banner1,
   img_Banner2: banner2,
   img_LiemBarber: Liem1,
+  img_LiemBarber2: LiemBarber,
+  img_LiemBarber3: liembarber2,
   img_VuTriBarber: VuTriBarber,
   img_shine30: shine30,
   img_August: August,
@@ -37,7 +42,8 @@ const Images = {
   img_showphone: showphone,
   img_appstore: apppstore,
   img_googleplay:googleplay,
-  img_qrcode: qrcode
+  img_qrcode: qrcode,
+  img_calendar: calendar,
 };
 
 export default Images;

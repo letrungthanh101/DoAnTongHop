@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase';
-import "./store.scss"
+import './store.scss';
 function Store(props) {
   const [storeList, setStoreList] = useState([]);
   useEffect(() => {
@@ -13,29 +13,34 @@ function Store(props) {
             storeList.push(store[item]);
           }
           setStoreList(storeList);
+          console.log(storeList)
         });
       } catch (error) {
         console.log('fail to fetch ', error.message);
       }
     };
     fetchData();
-  }, []);
+  },[]);
 
-  return <div>
-     <h3>Recently Viewed</h3>
-    <h3>7 Store in Ho Chi Minh</h3>    
-     <div className="store container">
-         <div className="row">
-         {storeList.map((store,index)=>{
-             return <div key = {index} className="col-md-3">
-                 <img src={store.Image} alt="photo-store"/>
-                 <h5>{store.NameStore}</h5>
-             </div>
-         })}
-     </div>
-         </div>
+  return (
+    <div className="container">
+      <h3>Recently Viewed</h3>
       
-  </div>;
+      <h3>7 Store in Ho Chi Minh</h3>
+      <div className="store container">
+        <div className="row">
+          {storeList.map((store, index) => {
+            return (
+              <div key={index} className="col-md-3 store__item">
+                <img src={store.Image} alt="photo-store" />
+                <h5>{store.NameStore}</h5>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Store;
