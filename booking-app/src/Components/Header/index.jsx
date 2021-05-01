@@ -61,7 +61,7 @@ function Header(props) {
               </li>
               <li className="nav-item">
                 <NavLink to="/booking" className="li__item  li__item--hover " activeClassName="active-menu">
-                  BOOKING
+                NEWS
                 </NavLink>
               </li>
             </ul>

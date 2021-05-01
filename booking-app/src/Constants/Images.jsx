@@ -21,6 +21,10 @@ import facebook from '../Assets/Images/SVG/facebook.svg';
 import instagram from '../Assets/Images/SVG/instagram.svg';
 import printerest from '../Assets/Images/SVG/pinterest.svg';
 import calendar from "../Assets/Images/SVG/calendar.svg";
+
+import store from "../Assets/Images/SVG/store.svg";
+import landline from "../Assets/Images/SVG/landline.svg";
+import star from "../Assets/Images/SVG/star.svg";
 const Images = {
   img_Banner: banner,
   img_Banner1: banner1,
@@ -44,6 +48,10 @@ const Images = {
   img_googleplay:googleplay,
   img_qrcode: qrcode,
   img_calendar: calendar,
+  img_store: store,
+  img_phone: landline,
+  img_star : star,
+
 };
 
 export default Images;
