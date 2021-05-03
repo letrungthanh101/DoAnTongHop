@@ -94,7 +94,6 @@ function Slide(props) {
               <img src={item.images} alt="" className="img-card" />
               <div className="card__description">
                 <h5>{item.title}</h5>
-               
               </div>
             </div>
           ))}

@@ -1,5 +1,5 @@
 import DateFnsUtils from '@date-io/date-fns';
-import { Button, IconButton, TextField } from '@material-ui/core';
+import { Button, IconButton, Paper, TextField } from '@material-ui/core';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { KeyboardDatePicker, MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers';
 import 'date-fns';
 import React from 'react';
 import 'swiper/components/navigation/navigation.scss';
@@ -101,6 +101,16 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     height: 33,
     padding: '0 30px',
+    margin: '20px 0px',
+  },
+  advice: {
+    color: theme.palette.getContrastText(grey[900]),
+
+    backgroundColor: grey[900],
+    '&:hover': {
+      backgroundColor: grey[900],
+    },
+    margin: '20px 0px',
   },
 }));
 
@@ -208,6 +218,40 @@ function FormBooking(props) {
                 </div>
               </div>
             </div>
+            <div className="barber__time">
+              <div className="barber__time--left">
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <Grid container >
+                    <KeyboardDatePicker
+                      disableToolbar
+                      variant="outlined"
+                      format="MM/dd/yyyy"
+                      margin="normal"
+                      id="date-picker-inline"
+                      label="Date picker"
+                      value={selectedDate}
+                      color="secondary"
+                      onChange={handleDateChange}
+                      KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                      }}
+                
+                    />
+                  </Grid>
+                </MuiPickersUtilsProvider>
+              </div>
+              <div className="barber__time--flex">
+                <div className="barber__status barber__status--full" >  </div>
+                <p>Full</p>
+                <div className="barber__status barber__status--available"></div>
+                <p>Availability</p>
+              </div>
+              <div className="booking__time">
+                     <div>
+                       
+                     </div>
+              </div>
+            </div>
           </div>
           <div className="col-md-6 col-sm-8 col-lg-4">
             <div className="form__booking">
@@ -226,13 +270,27 @@ function FormBooking(props) {
                           format="MM/dd/yyyy"
                           margin="normal"
                           id="date-picker-inline"
-                          label="Date picker inline"
+                          label="Date picker"
                           value={selectedDate}
                           color="secondary"
                           fullWidth
                           onChange={handleDateChange}
                           KeyboardButtonProps={{
                             'aria-label': 'change date',
+                          }}
+                        />
+                      </Grid>
+                      <Grid>
+                        <KeyboardTimePicker
+                          margin="normal"
+                          id="time-picker"
+                          label="Time picker"
+                          fullWidth
+                          color="secondary"
+                          value={selectedDate}
+                          onChange={handleDateChange}
+                          KeyboardButtonProps={{
+                            'aria-label': 'change time',
                           }}
                         />
                       </Grid>
@@ -285,12 +343,19 @@ function FormBooking(props) {
                   </Grid>
                 </Grid>
               </form>
-              <form>
-                <Grid container xs={12}>
-                        typo
-                </Grid>
-              </form>
             </div>
+            <Grid container xs={12} className="form__advice">
+              <form action="" type="onSubmit">
+                <Typography variant="h6" align="center">
+                  Advice from the barbershop
+                </Typography>
+                <TextField label="Your name" variant="outlined" margin="normal" fullWidth color="secondary" />
+                <TextField label="Your phone" variant="outlined" margin="normal" fullWidth color="secondary" />
+                <Button variant="contained" margin="normal" fullWidth className={classes.advice}>
+                  Advice free
+                </Button>
+              </form>
+            </Grid>
           </div>
         </div>
       </div>
