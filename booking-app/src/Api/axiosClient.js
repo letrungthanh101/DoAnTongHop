@@ -2,7 +2,7 @@ import axios from "axios"
 import firebase from "firebase"
 
 const axiosClient = axios.create({
-    baseURL: 'https://api.ezfrontend.com/',
+    baseURL: process.env.REACT_APP_FIREBASE_API,
     header:{
         'Content-type': 'application/json'
     }

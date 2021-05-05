@@ -23,29 +23,30 @@ const useStyles = makeStyles({
   btn: {
     color: 'white',
   },
-
- 
 });
 function Header(props) {
   const classes = useStyles();
+ 
   return (
     <div>
       <header>
         <nav className="navbar navbar-expand-lg  ">
           <div className="top-nav--middle logo-brand">
-          <Link to="/home" exact>
-                <img src={logo} alt="logo" />
-              </Link>
+            <Link to="/home" exact>
+              <img src={logo} alt="logo" />
+            </Link>
           </div>
-           
-          <IconButton    className="navbar-toggler"
+
+          <IconButton
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
-            aria-label="Toggle navigation">
-            <MenuIcon className={classes.btn}/>
+            aria-label="Toggle navigation"
+          >
+            <MenuIcon className={classes.btn} />
           </IconButton>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav m-auto navbar-flex">
@@ -61,7 +62,7 @@ function Header(props) {
               </li>
               <li className="nav-item">
                 <NavLink to="/booking" className="li__item  li__item--hover " activeClassName="active-menu">
-                NEWS
+                  NEWS
                 </NavLink>
               </li>
             </ul>
@@ -82,12 +83,10 @@ function Header(props) {
                 </NavLink>
               </li>
               <li className="nav-item ">
-              <Link to="/login">
-                <Button className={classes.root} startIcon={<PersonIcon />}>
-
-                LOGIN
-                 
-                </Button>
+                <Link to="/login">
+                  <Button className={classes.root} startIcon={<PersonIcon />}>
+                    LOGIN
+                  </Button>
                 </Link>
               </li>
             </ul>

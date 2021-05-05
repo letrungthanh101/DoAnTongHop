@@ -1,5 +1,9 @@
+import CircularStatic from 'Components/Loading/index';
+import { login } from 'Features/Auth/userSlice';
 import firebase from 'firebase';
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit'
 import { Route, Switch } from 'react-router';
 // import Login from '../src/Features/Auth/Login';
 // import Blog from '../src/Pages/Blog';
@@ -33,6 +37,7 @@ function App() {
   const Owner = React.lazy(() => import('./Pages/Owner'));
   const Login = React.lazy(() => import('./Features/Auth/Login'));
   const SignUp = React.lazy(() => import('./Features/Auth/Signup'));
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
@@ -42,9 +47,11 @@ function App() {
         return;
       }
       console.log('Logged in user', user.displayName);
-
+      const actionResult = dispatch(login)
+      const currentUser = unwrapResult(actionResult)
+      console.log("user is logged",currentUser);
       const token = await user.getIdToken();
-      console.log('Logged in user token', token);
+      // console.log('Logged in user token', token);
     });
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
   }, []);

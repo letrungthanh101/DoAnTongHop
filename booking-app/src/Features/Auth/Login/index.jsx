@@ -10,11 +10,9 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import firebase from 'firebase';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { Link } from 'react-router-dom';
-
-
 
 // Configure FirebaseUI.
 const uiConfig = {
@@ -46,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(4)
+    marginBottom: theme.spacing(4),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -62,7 +60,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function Login(props) {
+ 
+
+  // useEffect(() => {
+  //   const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
+  //     // setIsSignedIn(!!user);
+  //     if (!user) {
+  //       //if user logout handle something
+  //       console.log('user is not logged in');
+  //       return;
+  //     }
+  //     console.log('Logged in user', user.displayName);
+  //     setUser(user.displayName);
+
+  //     const token = await user.getIdToken();
+  //     console.log('Logged in user token', token);
+  //   });
+  //   return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  // }, []);
+
   const classes = useStyles();
 
   return (
@@ -118,7 +135,6 @@ export default function Login() {
           </Grid>
         </form>
       </div>
-     
     </Container>
   );
 }
