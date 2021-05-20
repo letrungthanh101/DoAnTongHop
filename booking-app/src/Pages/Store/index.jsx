@@ -1,44 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase';
 import './store.scss';
+import Barbershops from 'Components/Barbershops/index';
+import BarbershopSkeletonList from 'Components/SkeletonListBarbershop/index';
+
 function Store(props) {
   const [storeList, setStoreList] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       try {
         const data = await firebase.database().ref('Stores');
         data.on('value', (snapshot) => {
           const store = snapshot.val();
-          for (let item in store) {
-            storeList.push(store[item]);
-          }
-          setStoreList(storeList);
-          console.log(storeList)
+          const values = Object.values(store);
+
+          setStoreList(values);
+          console.log(values);
         });
       } catch (error) {
         console.log('fail to fetch ', error.message);
       }
-    };
-    fetchData();
-  },[]);
+      setLoading(false);
+    })();
+  }, []);
 
   return (
     <div className="container">
       <h3>Recently Viewed</h3>
-      
       <h3>7 Store in Ho Chi Minh</h3>
-      <div className="store container">
-        <div className="row">
-          {storeList.map((store, index) => {
-            return (
-              <div key={index} className="col-md-3 store__item">
-                <img src={store.Image} alt="photo-store" />
-                <h5>{store.NameStore}</h5>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+
+      {loading ? <BarbershopSkeletonList data={storeList} /> : <Barbershops storeList={storeList} />}
     </div>
   );
 }

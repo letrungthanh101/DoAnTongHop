@@ -20,14 +20,7 @@ const uiConfig = {
   signInFlow: 'redirect',
   signInSuccessUrl: '/home',
   // We will display Google and Facebook as auth providers.
-  signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    // firebase.auth.FacebookAuthProvider.PROVIDER_ID
-  ],
-  // callbacks: {
-  //   // Avoid redirects after sign-in.
-  //   signInSuccessWithAuthResult: () => false,
-  // },
+  signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -61,25 +54,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login(props) {
- 
-
-  // useEffect(() => {
-  //   const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
-  //     // setIsSignedIn(!!user);
-  //     if (!user) {
-  //       //if user logout handle something
-  //       console.log('user is not logged in');
-  //       return;
-  //     }
-  //     console.log('Logged in user', user.displayName);
-  //     setUser(user.displayName);
-
-  //     const token = await user.getIdToken();
-  //     console.log('Logged in user token', token);
-  //   });
-  //   return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
-  // }, []);
-
   const classes = useStyles();
 
   return (
@@ -119,7 +93,7 @@ export default function Login(props) {
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             Sign In
           </Button>
-          <p className="text-center">OR</p>
+          <p className="text-center">Or login with social account</p>
           <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
           <Grid container>
             <Grid item xs>

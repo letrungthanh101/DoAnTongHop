@@ -1,20 +1,22 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import userApi from 'Api/userApi';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import firebase from 'firebase';
 
-export const register = createAsyncThunk('user/register', async (payload) => {
-  //call api to register
 
-  //save data to local storage
 
-  //return user.data
-  return {};
-});
 
+//action
 export const login = createAsyncThunk('user/loginFromFirebase', async (payload) => {
-  const currentUser = await userApi.getMe();
+  //call api to login
+  const currentUser = await firebase.auth().onAuthStateChanged(payload);
+  // lưu local storage
+  console.log('data from redux',payload)
+  localStorage.setItem('access_token', currentUser.getIdToken());
+  localStorage.setItem('name_user', currentUser.displayName);
 
+  //return data
   return {
-   currentUser,
+   
+    loginFirebase: currentUser
   };
 });
 
@@ -23,26 +25,15 @@ const userSlice = createSlice({
   initialState: {
     current: {},
     setting: {},
-    loading: false,
-    error: '',
+ 
   },
   reducers: {},
   extraReducers: {
     // định nghĩa ra 1 action type
-    [register.fulfilled]: (state, action) => {
-      state.current = action.payload;
-    },
 
-    [login.pending]: (state, action) => {
-        state.loading = true
-    },
-    [login.rejected]: (state, action) => {
-        state.loading = false;
-        state.error = 'Lỗi rồi';
-    },
     [login.fulfilled]: (state, action) => {
-        state.loading = false;
-        state.current = action.payload
+     
+      state.current = action.payload;
     },
   },
 });

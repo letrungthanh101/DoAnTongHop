@@ -1,21 +1,12 @@
-import CircularStatic from 'Components/Loading/index';
+import { unwrapResult } from '@reduxjs/toolkit';
 import { login } from 'Features/Auth/userSlice';
 import firebase from 'firebase';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { unwrapResult } from '@reduxjs/toolkit'
 import { Route, Switch } from 'react-router';
-// import Login from '../src/Features/Auth/Login';
-// import Blog from '../src/Pages/Blog';
-// import Booking from '../src/Pages/Booking';
-// import Home from '../src/Pages/Home';
-// import Owner from '../src/Pages/Owner';
-// import Store from '../src/Pages/Store';
 import './App.css';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
-// import SignUp from './Features/Auth/Signup'
-
 
 // Configure Firebase.
 const config = {
@@ -23,13 +14,10 @@ const config = {
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   databaseURL: 'https://flutterapp-a5eb3.firebaseio.com',
   projectId: 'flutterapp-a5eb3',
-
-  // ...
 };
+
 firebase.initializeApp(config);
-
 function App() {
-
   const Home = React.lazy(() => import('./Pages/Home'));
   const Store = React.lazy(() => import('./Pages/Store'));
   const Booking = React.lazy(() => import('./Pages/Booking'));
@@ -37,41 +25,42 @@ function App() {
   const Owner = React.lazy(() => import('./Pages/Owner'));
   const Login = React.lazy(() => import('./Features/Auth/Login'));
   const SignUp = React.lazy(() => import('./Features/Auth/Signup'));
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
+  const [user, setUser] = useState('');
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
-      // setIsSignedIn(!!user);
-      if (!user) {
-        console.log('user is not logged in');
-        return;
-      }
-      console.log('Logged in user', user.displayName);
-      const actionResult = dispatch(login)
-      const currentUser = unwrapResult(actionResult)
-      console.log("user is logged",currentUser);
+      if (!user) return;
+      setUser(user.displayName);
+
       const token = await user.getIdToken();
-      // console.log('Logged in user token', token);
+      // getIdToken auto refesh
+      console.log('Logged in user token', token);
+
+      const action = await login;
+      const actionResult = dispatch(action);
+      const currentUser = unwrapResult(actionResult);
+      // console.log(currentUser)
     });
+
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
   }, []);
 
   return (
-   
     <div className="App">
-      <Header />
-      <React.Suspense fallback={<p>Loading...</p>}>
-      <Route path="/" component={Home} exact />
-      <Route path="/home" component={Home} />
+      <Header displayUser={user} />
 
-      <Switch>
-        <Route path="/store" component={Store} />
-        <Route path="/booking" component={Booking} />
-        <Route path="/blog" component={Blog} />
-        <Route path="/owner" component={Owner} />
-        <Route path="/login" component={Login} exact />
-        <Route path="/sign-up" component={SignUp} exact />
-      </Switch>
+      <React.Suspense fallback={<p>Loading...</p>}>
+        <Route path="/" component={Home} exact />
+        <Route path="/home" component={Home} />
+
+        <Switch>
+          <Route path="/store" component={Store} exact />
+          <Route path="/booking" component={Booking} exact />
+          <Route path="/blog" component={Blog} />
+          <Route path="/owner" component={Owner} />
+          <Route path="/login" component={Login} exact />
+          <Route path="/sign-up" component={SignUp} exact />
+        </Switch>
       </React.Suspense>
       {/* {storeList.map((item)=>{
         return <li>{item.Address}</li>
