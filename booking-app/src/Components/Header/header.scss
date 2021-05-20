@@ -37,8 +37,11 @@ header {
   .nav-item{
     margin: 15px auto;
     // margin-top:15px ;
+   
   }
-  
+  .active-menu{
+    color: $color-primary;
+  }
 }
 
 

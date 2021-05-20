@@ -10,10 +10,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import firebase from 'firebase';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../Assets/Images/logo.svg';
+
+import { useSnackbar } from 'notistack';
+
 import './header.scss';
+
 Header.propTypes = {};
 const useStyles = makeStyles({
   root: {
@@ -38,7 +42,9 @@ function Header(props) {
 
   const [open, setOpen] = useState(false);
 
-  const anchorRef = React.useRef(null);
+  const anchorRef = useRef(null);
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -69,8 +75,6 @@ function Header(props) {
     prevOpen.current = open;
   }, [open]);
 
-  
-
   return (
     <div>
       <header>
@@ -95,19 +99,25 @@ function Header(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav m-auto navbar-flex">
               <li className="nav-item ">
-                <NavLink to="/" className="li__item  li__item--hover  " activeClassName="active-menu">
-                  HOME
-                </NavLink>
+                <Button>
+                  <NavLink to="/" className="li__item  li__item--hover  " activeClassName="active-menu">
+                    HOME
+                  </NavLink>
+                </Button>
               </li>
               <li className="nav-item">
-                <NavLink to="/store" className="li__item  li__item--hover " activeClassName="active-menu">
-                  STORE
-                </NavLink>
+                <Button>
+                  <NavLink to="/store" className="li__item  li__item--hover " activeClassName="active-menu">
+                    STORE
+                  </NavLink>
+                </Button>
               </li>
               <li className="nav-item">
-                <NavLink to="/booking" className="li__item  li__item--hover " activeClassName="active-menu">
-                  NEWS
-                </NavLink>
+                <Button>
+                  <NavLink to="/booking" className="li__item  li__item--hover " activeClassName="active-menu">
+                    NEWS
+                  </NavLink>
+                </Button>
               </li>
             </ul>
             <div className="top-nav--middle logo  m-auto navbar-flex">
@@ -117,14 +127,18 @@ function Header(props) {
             </div>
             <ul className="navbar-nav m-auto navbar-flex">
               <li className="nav-item">
-                <NavLink to="/blog" className="li__item  li__item--hover " activeClassName="active-menu">
-                  BLOG
-                </NavLink>
+                <Button>
+                  <NavLink to="/blog" className="li__item  li__item--hover " activeClassName="active-menu">
+                    BLOG
+                  </NavLink>
+                </Button>
               </li>
               <li className="nav-item">
-                <NavLink to="/owner" className="li__item  li__item--hover " activeClassName="active-menu">
-                  FOR OWNER
-                </NavLink>
+                <Button>
+                  <NavLink to="/owner" className="li__item  li__item--hover " activeClassName="active-menu">
+                    FOR OWNER
+                  </NavLink>
+                </Button>
               </li>
               <li className="nav-item ">
                 {displayUser ? (
@@ -136,7 +150,7 @@ function Header(props) {
                       onClick={handleToggle}
                       className={classes.btn}
                     >
-                      Hello ! {displayUser}
+                     <Link to="/"  className="li__item  li__item--hover " >  Hello ! {displayUser} </Link>
                     </Button>
                     <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                       {({ TransitionProps, placement }) => (

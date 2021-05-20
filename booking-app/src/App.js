@@ -7,7 +7,7 @@ import { Route, Switch } from 'react-router';
 import './App.css';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
-
+import { useSnackbar } from 'notistack';
 // Configure Firebase.
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API,
@@ -27,6 +27,7 @@ function App() {
   const SignUp = React.lazy(() => import('./Features/Auth/Signup'));
   const dispatch = useDispatch();
   const [user, setUser] = useState('');
+  const { enqueueSnackbar } = useSnackbar();
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
       if (!user) return;
@@ -39,7 +40,7 @@ function App() {
       const action = await login;
       const actionResult = dispatch(action);
       const currentUser = unwrapResult(actionResult);
-      // console.log(currentUser)
+      enqueueSnackbar('Login success!', { variant: 'success' });
     });
 
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
@@ -62,9 +63,7 @@ function App() {
           <Route path="/sign-up" component={SignUp} exact />
         </Switch>
       </React.Suspense>
-      {/* {storeList.map((item)=>{
-        return <li>{item.Address}</li>
-      })} */}
+     
       <Footer />
     </div>
   );
