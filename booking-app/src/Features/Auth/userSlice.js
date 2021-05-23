@@ -12,10 +12,8 @@ export const login = createAsyncThunk('user/loginFromFirebase', async (payload) 
   console.log('data from redux',payload)
   localStorage.setItem('access_token', currentUser.getIdToken());
   localStorage.setItem('name_user', currentUser.displayName);
-
   //return data
   return {
-   
     loginFirebase: currentUser
   };
 });
@@ -30,7 +28,6 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: {
     // định nghĩa ra 1 action type
-
     [login.fulfilled]: (state, action) => {
      
       state.current = action.payload;

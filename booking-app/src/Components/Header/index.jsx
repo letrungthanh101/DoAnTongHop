@@ -11,9 +11,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import firebase from 'firebase';
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink,hi } from 'react-router-dom';
 import logo from '../../Assets/Images/logo.svg';
-
 import { useSnackbar } from 'notistack';
 
 import './header.scss';
@@ -35,6 +34,9 @@ const useStyles = makeStyles({
   paper: {
     marginRight: '2',
   },
+  zIndex:{
+    zIndex: 1400
+  }
 });
 function Header(props) {
   const { displayUser } = props;
@@ -74,6 +76,13 @@ function Header(props) {
 
     prevOpen.current = open;
   }, [open]);
+
+  const handleLogout = () =>{
+    const logOut = firebase.auth().signOut();
+    console.log("logout success",logOut);
+ 
+    return logOut;
+  }
 
   return (
     <div>
@@ -158,12 +167,12 @@ function Header(props) {
                           {...TransitionProps}
                           style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
                         >
-                          <Paper>
+                          <Paper className={classes.zIndex}>
                             <ClickAwayListener onClickAway={handleClose}>
                               <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                                 <MenuItem onClick={handleClose}>My account</MenuItem>
-                                <MenuItem onClick={() => firebase.auth().signOut()}>Logout</MenuItem>
+                                <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
                               </MenuList>
                             </ClickAwayListener>
                           </Paper>

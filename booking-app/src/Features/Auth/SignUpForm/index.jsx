@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import InputField from '../../../Components/Form-control/InputField';
 import PasswordField from '../../../Components/Form-control/PasswordField';
-
+import firebase from 'firebase';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -95,7 +95,7 @@ export default function SignUpForm(props) {
               <FormControlLabel control={<Checkbox value="allowExtraEmails" color="primary" />} label="I agree" />
             </Grid>
           </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit} >
             Create account
           </Button>
           <Grid container justify="flex-end">

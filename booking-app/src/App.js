@@ -1,19 +1,21 @@
 import { unwrapResult } from '@reduxjs/toolkit';
+import NotFound from 'Components/NotFound';
 import { login } from 'Features/Auth/userSlice';
 import firebase from 'firebase';
+import { useSnackbar } from 'notistack';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import './App.css';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
-import { useSnackbar } from 'notistack';
+
 // Configure Firebase.
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: 'https://flutterapp-a5eb3.firebaseio.com',
-  projectId: 'flutterapp-a5eb3',
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
 };
 
 firebase.initializeApp(config);
@@ -32,9 +34,18 @@ function App() {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
       if (!user) return;
       setUser(user.displayName);
+      // const submitForm = await firebase.database().ref('Users');
+      // submitForm.push();
+      // submitForm.set({
+      //   name: user.displayName,
+      //   password: user,
+      // });
 
       const token = await user.getIdToken();
+      const userName = await user.displayName;
       // getIdToken auto refesh
+      console.log('Logged in user token', );
+
       console.log('Logged in user token', token);
 
       const action = await login;
@@ -51,19 +62,25 @@ function App() {
       <Header displayUser={user} />
 
       <React.Suspense fallback={<p>Loading...</p>}>
-        <Route path="/" component={Home} exact />
-        <Route path="/home" component={Home} />
+      
+        <Redirect path="/home" to="/" component={Home} exact />
 
+        {/* <AuthProvider> */}
         <Switch>
-          <Route path="/store" component={Store} exact />
-          <Route path="/booking" component={Booking} exact />
+        <Route path="/" component={Home} exact />
+          <Route path="/store" component={Store} />
+          <Route path="/booking" component={Booking}  />
           <Route path="/blog" component={Blog} />
           <Route path="/owner" component={Owner} />
-          <Route path="/login" component={Login} exact />
+
           <Route path="/sign-up" component={SignUp} exact />
+
+          <Route path="/login" component={Login} exact />
+          <Route component={NotFound}/>
         </Switch>
+        {/* </AuthProvider> */}
       </React.Suspense>
-     
+
       <Footer />
     </div>
   );
