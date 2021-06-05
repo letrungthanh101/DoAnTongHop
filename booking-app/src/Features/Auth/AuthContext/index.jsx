@@ -12,10 +12,12 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   function signup(email, password) {
+
     return firebase.auth().createUserWithEmailAndPassword(email, password)
   }
 
   function login(email, password) {
+  
     return firebase.auth().signInWithEmailAndPassword(email, password)
   }
 
@@ -34,11 +36,15 @@ export function AuthProvider({ children }) {
   function updatePassword(password) {
     return currentUser.updatePassword(password)
   }
+  function getInfoUser(){
+    return currentUser
+  }
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       setCurrentUser(user)
       setLoading(false)
+      console.log("Thông tin user",JSON.stringify(user))
     })
 
     return unsubscribe
@@ -51,7 +57,8 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    getInfoUser
   }
 
   return (

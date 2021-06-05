@@ -3,6 +3,7 @@
 header {
   // background-color: $color-black;
   background-color: $color-black;
+  position: sticky;
   
 }
 
@@ -57,5 +58,9 @@ li {
   .li__item--hover:hover {
     color: $color-primary;
     text-decoration: none;
+  }
+  p{
+    color: $color-white;
+    font-size: 1rem;
   }
 }

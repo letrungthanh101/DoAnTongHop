@@ -101,7 +101,7 @@ function Home(props) {
         <Carousel />
       </section>
       <Content />
-
+    {/* <Footer/> */}
     </div>
   );
 }

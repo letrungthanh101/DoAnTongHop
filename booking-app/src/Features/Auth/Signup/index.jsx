@@ -1,38 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import { unwrapResult } from '@reduxjs/toolkit';
+import firebase from 'firebase';
+import { useSnackbar } from 'notistack';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { useAuth } from '../AuthContext';
 import SignUpForm from '../SignUpForm';
-import firebase from 'firebase';
+import { register } from '../userSlice';
 SignUp.propTypes = {};
 
 function SignUp(props) {
-  // const { Register } = useAuth()
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const history = useHistory();
-
+  const { signup } = useAuth();
+  const dispatch = useDispatch();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => {
       if (!user) return;
     });
     return unregisterAuthObserver();
   }, []);
-
   const handleSubmit = async (values) => {
     console.log('form submit', values);
-    const submitForm = await firebase.database().ref('Users');
-    const infoSubmit = submitForm.push();
-    try{
-      infoSubmit.set({
-        fullName: values.fullName,
-        email: values.email,
-        phoneNumber: values.phoneNumber,
-        passWord: values.passWord,
-      });
-      console.log('Register success', JSON.stringify(infoSubmit));
-    }catch(error){
-      console.log("Failed to register", error.message);
+    try {
+      const action = register(values);
+
+      const resultAction = await dispatch(action);
+      const user = unwrapResult(resultAction);
+      console.log('Success !', user);
+
+      // history.push("/")
+      await enqueueSnackbar('Register success !', { variant: 'Success' });
+      // const setTime = setTimeout(() => {
+      //   history.push('/login');
+      // }, 2000);
+      // clearTimeout(setTime);
+    } catch (error) {
+      console.log(error.message);
+      enqueueSnackbar('Register fail !', { variant: 'error' });
     }
+
+    setLoading(false);
   };
 
   return (

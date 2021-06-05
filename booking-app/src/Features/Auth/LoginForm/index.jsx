@@ -10,15 +10,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import firebase from 'firebase';
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import InputField from '../../../Components/Form-control/InputField';
 import PasswordField from '../../../Components/Form-control/PasswordField';
-LoginForm.propTypes = {};
 
+import { useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { loginFirebase } from '../userSlice';
 // Configure FirebaseUI.
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
@@ -59,6 +61,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function LoginForm(props) {
+
+  const [data,setData] = useState({})
+  useEffect(() => {
+    const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
+      if (!user) return;
+      setData(user)
+  
+    });
+
+    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  }, []);
+
+  const dispatch = useDispatch();
   const classes = useStyles();
 
   const schema = yup.object().shape({
@@ -69,7 +84,6 @@ function LoginForm(props) {
     defaultValues: {
       email: '',
       passWord: '',
-      
     },
 
     resolver: yupResolver(schema),
@@ -81,10 +95,26 @@ function LoginForm(props) {
       onSubmit(values);
     }
     form.reset();
-  };
 
+    
+  };
+  const handleLoginGoogleFirebase = async () => {
+    const response = JSON.stringify(data)
+    const passResponse = JSON.parse(response
+      )
+    try {
+      const action = loginFirebase(passResponse);
+      const resultAction = await dispatch(action);
+      const user = unwrapResult(resultAction);
+      console.log('thông tin user google', user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
+ 
     <div>
+      
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -95,14 +125,14 @@ function LoginForm(props) {
             Sign in
           </Typography>
           <form className={classes.form} noValidate onSubmit={form.handleSubmit(handleSubmit)}>
-          <InputField name="email" label="Email" form={form} />
-          <PasswordField name="passWord" label="Password" form={form} />
+            <InputField name="email" label="Email" form={form} />
+            <PasswordField name="passWord" label="Password" form={form} />
             <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
             <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
               Sign In
             </Button>
             <p className="text-center">Or login with social account</p>
-            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} handleLoginGoogleFirebase={handleLoginGoogleFirebase()} />
             <Grid container>
               <Grid item xs>
                 <Link to="/" variant="body2">

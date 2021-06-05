@@ -11,12 +11,16 @@ import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import firebase from 'firebase';
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, NavLink,hi } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import logo from '../../Assets/Images/logo.svg';
 import { useSnackbar } from 'notistack';
 
 import './header.scss';
+import { useAuth } from 'Features/Auth/AuthContext';
+import { useSelector } from 'react-redux';
 
+import { useDispatch } from 'react-redux';
+import {logOut} from "../../Features/Auth/userSlice"
 Header.propTypes = {};
 const useStyles = makeStyles({
   root: {
@@ -39,15 +43,18 @@ const useStyles = makeStyles({
   }
 });
 function Header(props) {
-  const { displayUser } = props;
+
+  // const {getInfoUser} = useAuth();
+
   const classes = useStyles();
-
   const [open, setOpen] = useState(false);
-
+  const [hiding,setHiding] = useState(true)
+  const history = useHistory()
   const anchorRef = useRef(null);
-
-  const { enqueueSnackbar } = useSnackbar();
-
+  const user = useSelector(state => state.user)
+  const { displayUser } = props;
+  const {displayName} = user.current;
+  const dispatch = useDispatch()
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -78,22 +85,24 @@ function Header(props) {
   }, [open]);
 
   const handleLogout = () =>{
-    const logOut = firebase.auth().signOut();
+    // const logOut = firebase.auth().signOut();
+    const action = dispatch(logOut)
     console.log("logout success",logOut);
- 
+    setHiding(false)
     return logOut;
   }
 
   return (
     <div>
       <header>
+        
         <nav className="navbar navbar-expand-lg  ">
           <div className="top-nav--middle logo-brand">
             <Link to="/home" exact>
               <img src={logo} alt="logo" />
             </Link>
           </div>
-
+          {console.log("user name from redux",user.current.displayName)}
           <IconButton
             className="navbar-toggler"
             type="button"
@@ -150,7 +159,7 @@ function Header(props) {
                 </Button>
               </li>
               <li className="nav-item ">
-                {displayUser ? (
+                {displayName && hiding ? (
                   <div>
                     <Button
                       ref={anchorRef}
@@ -159,7 +168,7 @@ function Header(props) {
                       onClick={handleToggle}
                       className={classes.btn}
                     >
-                     <Link to="/"  className="li__item  li__item--hover " >  Hello ! {displayUser} </Link>
+                     <p to=""  className="li__item  li__item--hover " >  Hello ! {displayName} </p>
                     </Button>
                     <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                       {({ TransitionProps, placement }) => (

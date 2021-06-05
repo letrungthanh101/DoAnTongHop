@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(4),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -50,14 +51,21 @@ export default function SignUpForm(props) {
       }),
     email: yup.string().required('Please enter your email').email('Please enter valid your email'),
     passWord: yup.string().required('Please enter your password').min(6, 'Please enter at least 6 character.'),
-    confirmPassword: yup.string().required('Please retype password').oneOf([yup.ref('passWord')],'Password dose not match'),
-    phoneNumber: yup.number().required('Please enter you phone numbers').typeError('Enter valid your phone number').min(10,'Your phone number invalid')
+    confirmPassword: yup
+      .string()
+      .required('Please retype password')
+      .oneOf([yup.ref('passWord')], 'Password dose not match'),
+    phoneNumber: yup
+      .number()
+      .required('Please enter you phone numbers')
+      .typeError('Enter valid your phone number')
+      .min(10, 'Your phone number invalid'),
   });
   const form = useForm({
     defaultValues: {
       fullName: '',
       email: '',
-      phoneNumber:'',
+      phoneNumber: '',
       passWord: '',
       confirmPassword: '',
     },
@@ -84,18 +92,15 @@ export default function SignUpForm(props) {
           Sign up
         </Typography>
         <form className={classes.form} noValidate onSubmit={form.handleSubmit(handleSubmit)}>
-          <Grid container spacing={2}>
-            <InputField name="fullName" label="Full Name" form={form} />
-            <InputField name="email" label="Email" form={form} />
-            <InputField name="phoneNumber" label="Phone Number" form={form}/>
-            <PasswordField name="passWord" label="Password" form={form} />
-            <PasswordField name="confirmPassword" label="Confirm Password" form={form} />
+          <InputField name="fullName" label="Full Name" form={form} />
+          <InputField name="email" label="Email" form={form} />
+          <InputField name="phoneNumber" label="Phone Number" form={form} />
+          <PasswordField name="passWord" label="Password" form={form} />
+          <PasswordField name="confirmPassword" label="Confirm Password" form={form} />
 
-            <Grid item xs={12}>
-              <FormControlLabel control={<Checkbox value="allowExtraEmails" color="primary" />} label="I agree" />
-            </Grid>
-          </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit} >
+          <FormControlLabel control={<Checkbox value="allowExtraEmails" color="primary" />} label="I agree" />
+
+          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             Create account
           </Button>
           <Grid container justify="flex-end">

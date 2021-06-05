@@ -1,10 +1,10 @@
 import React from 'react';
-
+import fetchBarbershop from "./barbershopSlice"
 function Barbershops(props) {
     const {storeList} = props
   return (
     <div>
-     
+
       <div className="store container">
         <div className="row">
           {storeList.map((store, index) => {
